@@ -1,25 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState } from 'react';
+import './App.css'
+import { ThemeProvider, createMuiTheme, CssBaseline, responsiveFontSizes } from '@material-ui/core';
+import Landing from './components/Landing';
 
-function App() {
+
+export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  let lightTheme = createMuiTheme({
+    palette: {
+      type: 'light',
+      primary: {
+        main: '#ff9800'
+      },
+    },
+    typography: {
+      fontFamily: "'Roboto', sans-serif",
+      h1: {
+        fontSize: "2.1rem",
+        lineHeight: 1.3,
+        fontWeight: 400,
+        letterSpacing: '3px'
+      },
+      h2: {
+        fontSize: '1.4rem'
+      },
+      h3: {
+        fontSize: "1.1rem",
+        letterSpacing: '1px',
+        lineHeight: 1.5
+      }
+    }
+  });
+
+  let darkTheme = createMuiTheme({
+    palette: {
+      type: 'dark',
+      primary: {
+        main: '#ff9800'
+      },
+      background: {
+        default: "#000"
+      }
+    },
+    typography: {
+      fontFamily: "'Roboto', sans-serif",
+      h1: {
+        fontSize: "2.1rem",
+        lineHeight: 1.3,
+        fontWeight: 400,
+        letterSpacing: '3px'
+      },
+      h2: {
+        fontSize: '1.4rem'
+      },
+      h3: {
+        fontSize: "1.1rem",
+        letterSpacing: '1px',
+        lineHeight: 1.5
+      },
+    }
+  })
+
+  lightTheme = responsiveFontSizes(lightTheme);
+  darkTheme = responsiveFontSizes(darkTheme);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Fragment>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme} >
+        <CssBaseline />
+        <Landing setDarkMode={setDarkMode} darkMode={darkMode} />
+      </ThemeProvider>
+    </Fragment>
+  )
 }
-
-export default App;
