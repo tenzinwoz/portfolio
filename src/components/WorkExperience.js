@@ -30,7 +30,7 @@ function WorkExperience() {
                     <Paper className={classes.cardHolder} elevation={3}>
                         <Typography>ResoluteAi</Typography>
                         <Typography >Software Developer</Typography>
-                        <Typography variant="subtitle2" className={classes.duaration}>Nov 1st 2021 - Present</Typography>
+                        <Typography variant="subtitle2" className={classes.duaration}>Nov 1st 2020 - Present</Typography>
                     </Paper>
                 </Grid>
                 <Grid item lg={4} md={4} sm={12} xs={12}>
